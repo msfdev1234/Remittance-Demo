@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tayseer_Tech</string>
+
+
+    <string-array name="purposes">
+        <item>Family</item>
+        <item>Rent</item>
+        <item>Gift</item>
+        <item>Other</item>
+    </string-array>
+</resources>
