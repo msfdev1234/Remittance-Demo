@@ -49,7 +49,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:paddingLeft="8dp"
-        android:text="Sending Country"
+        android:text="Paying Country"
         android:textColor="@color/white"/>
 
     <EditText
@@ -72,7 +72,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:paddingLeft="8dp"
-        android:text="Sending Country"
+        android:text="Amount To Send"
         android:textColor="@color/white"/>
     <EditText
         android:id="@+id/AmountSend_Name"
@@ -81,7 +81,10 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:paddingLeft="8dp"
+        android:inputType="number"
         android:layout_marginTop="3dp"
+        android:hint="EX: 10 USD"
+        android:textColorHint="#98979b"
         android:layout_below="@+id/sendCo_dm_3"
         android:textColor="@color/white"
         android:background="@drawable/bc_shape"/>
@@ -95,7 +98,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:paddingLeft="8dp"
-        android:text="Sending Country"
+        android:text="Amount To Receive"
         android:textColor="@color/white"/>
     <EditText
         android:id="@+id/AmountRecieve_Name"
@@ -103,7 +106,10 @@
         android:layout_height="60dp"
         android:layout_marginRight="20dp"
         android:paddingLeft="8dp"
+        android:inputType="numberDecimal"
         android:layout_marginLeft="20dp"
+        android:hint="EX: 80 GBP"
+        android:textColorHint="#98979b"
         android:layout_marginTop="3dp"
         android:textColor="@color/white"
         android:layout_below="@+id/sendCo_dm_4"

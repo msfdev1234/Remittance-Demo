@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.madmobiledevs.tayseer_tech.Interface.ApiInterface;
+import com.madmobiledevs.tayseer_tech.LoadingDialougs.LoadingDialog;
 import com.madmobiledevs.tayseer_tech.Model.Payload1;
 import com.madmobiledevs.tayseer_tech.Model.SendingCountry;
 import com.madmobiledevs.tayseer_tech.Paying_Country_Activity;
@@ -40,16 +41,23 @@ public class SendingCountryAdapter extends RecyclerView.Adapter<SendingCountryAd
     private Context context;
     private List<SendingCountry> modelArrayList=new ArrayList<SendingCountry>();
 
+    LoadingDialog loadingDialog;
     private JsonArray listOfCountries = new JsonArray();
 
-    public SendingCountryAdapter(Context context, List<SendingCountry> modelArrayList) {
+    public SendingCountryAdapter(Context context, List<SendingCountry> modelArrayList, LoadingDialog loadingDialog) {
         this.context = context;
         this.modelArrayList = modelArrayList;
+        this.loadingDialog=loadingDialog;
 
     }
 
 
     public SendingCountryAdapter() {
+    }
+
+    public void updateList(List<SendingCountry> list){
+        modelArrayList = list;
+        notifyDataSetChanged();
     }
 
     public class viewHolder extends RecyclerView.ViewHolder{
@@ -99,6 +107,8 @@ public class SendingCountryAdapter extends RecyclerView.Adapter<SendingCountryAd
     }
 
     public void getReceivingCountries(String countryName) {
+        loadingDialog.startLoadingDialog();
+
         PCountryId pCountryId = new PCountryId(244);
         SCountryId sCountryId = new SCountryId(245);
         SystemId systemId = new SystemId(19);
@@ -117,12 +127,17 @@ public class SendingCountryAdapter extends RecyclerView.Adapter<SendingCountryAd
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
 
                 JsonObject object = response.body();
+                double exchangeRAte = object.get("payload").getAsJsonObject().get("result").getAsJsonArray().get(0).getAsJsonObject().get("currencies").getAsJsonArray().get(0).getAsJsonObject().get("exchangeRateUsd").getAsDouble();
                 listOfCountries = object.get("payload").getAsJsonObject().get("result").getAsJsonArray().get(0).getAsJsonObject().get("payingCountries").getAsJsonArray();
                 Log.e("joooooo",listOfCountries.toString());
 
+                loadingDialog.dismissDialog();
+
                 Intent intent = new Intent(context, Paying_Country_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("countryList", listOfCountries.toString());
                 intent.putExtra("sendingCountryName", countryName);
+                intent.putExtra("exchangeRate", Double.toString(exchangeRAte));
                 context.startActivity(intent);
 
             }
@@ -134,4 +149,7 @@ public class SendingCountryAdapter extends RecyclerView.Adapter<SendingCountryAd
         });
 
     }
+
+
+
 }

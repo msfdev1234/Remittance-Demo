@@ -6,11 +6,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.madmobiledevs.tayseer_tech.Adapter.SendingCountryAdapter;
+import com.madmobiledevs.tayseer_tech.LoadingDialougs.LoadingDialog;
 import com.madmobiledevs.tayseer_tech.Model.SendingCountry;
 
 import org.json.JSONArray;
@@ -20,6 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class Sending_Country_Activity extends AppCompatActivity {
 
@@ -27,15 +32,22 @@ public class Sending_Country_Activity extends AppCompatActivity {
 
     List<SendingCountry> modelArrayList=new ArrayList<>();
 
-    private RecyclerView.Adapter mAdapter;
+    private SendingCountryAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private EditText search_Bar;
 
     String stringArray;
+
+    LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sending_country);
+
+        loadingDialog = new LoadingDialog(this);
+
+        search_Bar = findViewById(R.id.search_Bar_EdtTxt_SC);
 
         Intent intent = getIntent();
         stringArray = intent.getStringExtra("countryList");
@@ -45,6 +57,8 @@ public class Sending_Country_Activity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView_SC);
 
         mRecyclerView.setHasFixedSize(true);
+
+        loadingDialog.startLoadingDialog();
 
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
@@ -56,7 +70,25 @@ public class Sending_Country_Activity extends AppCompatActivity {
 
 
 
+        search_Bar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
     }
+
+
 
     private void getAllCountries(){
         try {
@@ -80,13 +112,27 @@ public class Sending_Country_Activity extends AppCompatActivity {
                 modelArrayList.add(sendingCountry);
             }
 
-            mAdapter = new SendingCountryAdapter(getApplicationContext(), modelArrayList);
+            mAdapter = new SendingCountryAdapter(getApplicationContext(), modelArrayList, loadingDialog);
             mRecyclerView.setAdapter(mAdapter);
+            loadingDialog.dismissDialog();
 
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void filter(String text){
+        List<SendingCountry> temp = new ArrayList();
+        for(SendingCountry d: modelArrayList){
+            //or use .equal(text) with you want equal match
+            //use .toLowerCase() for better matches
+            if(d.getCountryName().toLowerCase().contains(text.toLowerCase())){
+                temp.add(d);
+            }
+        }
+        //update recyclerview
+        mAdapter.updateList(temp);
     }
 
 

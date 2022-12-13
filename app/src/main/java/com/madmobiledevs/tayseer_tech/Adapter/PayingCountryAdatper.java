@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.JsonArray;
 import com.madmobiledevs.tayseer_tech.CalculatorActivity;
+import com.madmobiledevs.tayseer_tech.LoadingDialougs.LoadingDialog;
 import com.madmobiledevs.tayseer_tech.Model.PayingCountry;
 import com.madmobiledevs.tayseer_tech.Model.SendingCountry;
 import com.madmobiledevs.tayseer_tech.R;
@@ -32,12 +33,21 @@ public class PayingCountryAdatper extends RecyclerView.Adapter<PayingCountryAdat
 
     private JsonArray listOfCountries = new JsonArray();
     private String sendingCOuntry_Name;
+    LoadingDialog loadingDialog;
+    String exchangeRate;
 
-    public PayingCountryAdatper(Context context, List<PayingCountry> modelArrayList, String sendingCOuntry_Name) {
+    public PayingCountryAdatper(Context context, List<PayingCountry> modelArrayList, String sendingCOuntry_Name, LoadingDialog loadingDialog, String exchangeRate) {
         this.context = context;
         this.modelArrayList = modelArrayList;
         this.sendingCOuntry_Name = sendingCOuntry_Name;
+        this.loadingDialog=loadingDialog;
+        this.exchangeRate = exchangeRate;
 
+    }
+
+    public void updateList_P(List<PayingCountry> list){
+        modelArrayList = list;
+        notifyDataSetChanged();
     }
 
     public class viewHolder extends RecyclerView.ViewHolder{
@@ -74,8 +84,10 @@ public class PayingCountryAdatper extends RecyclerView.Adapter<PayingCountryAdat
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, CalculatorActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("payingCountryName", payingCountry.getCountryName());
                 intent.putExtra("sendingCountryName", sendingCOuntry_Name);
+                intent.putExtra("exchangeRate", exchangeRate);
                 context.startActivity(intent);
             }
         });

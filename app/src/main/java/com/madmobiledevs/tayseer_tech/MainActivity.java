@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.madmobiledevs.tayseer_tech.Interface.ApiInterface;
+import com.madmobiledevs.tayseer_tech.LoadingDialougs.LoadingDialog;
 import com.madmobiledevs.tayseer_tech.Model.Payload;
 import com.madmobiledevs.tayseer_tech.Model.SendingCountry;
 import com.madmobiledevs.tayseer_tech.SubClasses.SystemId;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     Button check_Button;
     JsonArray listOfCountries;
 
+    LoadingDialog loadingDialog;
+
     List<SendingCountry> modelArrayList=new ArrayList<>();
 
     @Override
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listOfCountries = new JsonArray();
+        loadingDialog = new LoadingDialog(this);
 
         check_Button = findViewById(R.id.check_button1);
 
@@ -53,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void getSendingCountries() {
 
+        loadingDialog.startLoadingDialog();
+
         SystemId systemId = new SystemId(19);
 
         Payload payload =new Payload(systemId);
@@ -67,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                listOfCountries = object.get("payload").getAsJsonObject().get("result").getAsJsonArray();
 
                Log.e("Mainnnnnnnnnnnnnn",listOfCountries.toString());
+               loadingDialog.dismissDialog();
 
                Intent intent = new Intent(MainActivity.this, Sending_Country_Activity.class);
                intent.putExtra("countryList", listOfCountries.toString());

@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.madmobiledevs.tayseer_tech.Adapter.PayingCountryAdatper;
 import com.madmobiledevs.tayseer_tech.Adapter.SendingCountryAdapter;
+import com.madmobiledevs.tayseer_tech.LoadingDialougs.LoadingDialog;
 import com.madmobiledevs.tayseer_tech.Model.PayingCountry;
 import com.madmobiledevs.tayseer_tech.Model.SendingCountry;
 
@@ -24,23 +28,33 @@ public class Paying_Country_Activity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
+    LoadingDialog loadingDialog;
+
     //List<PayingCountry> modelArrayList=new ArrayList<>();
 
-    private RecyclerView.Adapter mAdapter_P;
+    private PayingCountryAdatper mAdapter_P;
     private RecyclerView.LayoutManager layoutManager_P;
 
     private List<PayingCountry> modelArrayList=new ArrayList<>();
 
     String stringArray_P, sendingCountry_Name;
 
+    private EditText search_Bar;
+    String exchangeRate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paying_country);
 
+        loadingDialog = new LoadingDialog(this);
+
+        search_Bar = findViewById(R.id.search_Bar_EdtTxt_PC);
+
         Intent intent = getIntent();
         stringArray_P = intent.getStringExtra("countryList");
         sendingCountry_Name = intent.getStringExtra("sendingCountryName");
+        exchangeRate = intent.getStringExtra("exchangeRate");
         Log.e("HIIII",stringArray_P.toString());
 
 
@@ -54,6 +68,23 @@ public class Paying_Country_Activity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager_P);
 
         getAllCountries();
+
+        search_Bar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
     }
 
     private void getAllCountries(){
@@ -77,7 +108,7 @@ public class Paying_Country_Activity extends AppCompatActivity {
                 modelArrayList.add(payingCountry);
             }
 
-            mAdapter_P = new PayingCountryAdatper(getApplicationContext(), modelArrayList, sendingCountry_Name);
+            mAdapter_P = new PayingCountryAdatper(getApplicationContext(), modelArrayList, sendingCountry_Name,loadingDialog, exchangeRate);
             mRecyclerView.setAdapter(mAdapter_P);
 
 
@@ -85,5 +116,18 @@ public class Paying_Country_Activity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void filter(String text){
+        List<PayingCountry> temp = new ArrayList();
+        for(PayingCountry d: modelArrayList){
+            //or use .equal(text) with you want equal match
+            //use .toLowerCase() for better matches
+            if(d.getCountryName().toLowerCase().contains(text.toLowerCase())){
+                temp.add(d);
+            }
+        }
+        //update recyclerview
+        mAdapter_P.updateList_P(temp);
     }
 }
