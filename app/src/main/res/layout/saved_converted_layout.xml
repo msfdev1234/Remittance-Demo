@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/line_Table"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f2f2f2"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cell_shape"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_below="@+id/line_Table">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/amount_Snt_TxtVw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="60 USD"
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/amount_Recieved_TxtVw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="100 GBP"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/purpose_dm_11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="Purpose"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/S_CountryNAme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="United States"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/R_CountryNAme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="Russia"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/purpose1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="Purpose"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/s_SenderName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="Mazhar"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/R_RecieverName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="Shaker"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/purpose2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="Purpose"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</RelativeLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,149 +7,208 @@
     android:background="@color/black"
     tools:context=".CalculatorActivity">
 
-    <TextView
-        android:id="@+id/title_dm_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="PAY NOW"
-        android:textSize="30sp"
-        android:textColor="@color/white"/>
-
-    <TextView
-        android:id="@+id/sendCo_dm_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/title_dm_1"
-        android:paddingLeft="8dp"
-        android:text="Sending Country"
-        android:textColor="@color/white"/>
-    <EditText
-        android:id="@+id/SC_Name"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:paddingLeft="8dp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/sendCo_dm_1"
-        android:background="@drawable/bc_shape"/>
-
-    <TextView
-        android:id="@+id/sendCo_dm_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/SC_Name"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:paddingLeft="8dp"
-        android:text="Paying Country"
-        android:textColor="@color/white"/>
-
-    <EditText
-        android:id="@+id/PC_Name"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="3dp"
-        android:paddingLeft="8dp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/sendCo_dm_2"
-        android:background="@drawable/bc_shape"/>
-    <TextView
-        android:id="@+id/sendCo_dm_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/PC_Name"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:paddingLeft="8dp"
-        android:text="Amount To Send"
-        android:textColor="@color/white"/>
-    <EditText
-        android:id="@+id/AmountSend_Name"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:paddingLeft="8dp"
-        android:inputType="number"
-        android:layout_marginTop="3dp"
-        android:hint="EX: 10 USD"
-        android:textColorHint="#98979b"
-        android:layout_below="@+id/sendCo_dm_3"
-        android:textColor="@color/white"
-        android:background="@drawable/bc_shape"/>
-
-    <TextView
-        android:id="@+id/sendCo_dm_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/AmountSend_Name"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:paddingLeft="8dp"
-        android:text="Amount To Receive"
-        android:textColor="@color/white"/>
-    <EditText
-        android:id="@+id/AmountRecieve_Name"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginRight="20dp"
-        android:paddingLeft="8dp"
-        android:inputType="numberDecimal"
-        android:layout_marginLeft="20dp"
-        android:hint="EX: 80 GBP"
-        android:textColorHint="#98979b"
-        android:layout_marginTop="3dp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/sendCo_dm_4"
-        android:background="@drawable/bc_shape"/>
+        android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/purpose_dm_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/AmountRecieve_Name"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:paddingLeft="8dp"
-        android:text="Purpose"
-        android:textSize="20sp"
-        android:textColor="@color/white"/>
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/purpose_dm_1"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/wh_bc"
-        android:spinnerMode="dropdown"/>
+        <TextView
+            android:id="@+id/title_dm_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="PAY NOW"
+            android:textSize="30sp"
+            android:textColor="@color/white"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner1"
-        android:layout_marginLeft="20dp"
-        android:text="SEND MONEY"
-        android:textStyle="italic"
-        android:textSize="23sp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/sendCo_dm_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/title_dm_1"
+            android:paddingLeft="8dp"
+            android:text="Sending Country"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/SC_Name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="8dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/sendCo_dm_1"
+            android:background="@drawable/bc_shape"/>
+
+        <TextView
+            android:id="@+id/sendCo_dm_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SC_Name"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="8dp"
+            android:text="Paying Country"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/PC_Name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:paddingLeft="8dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/sendCo_dm_2"
+            android:background="@drawable/bc_shape"/>
+        <TextView
+            android:id="@+id/sendCo_dm_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/PC_Name"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="8dp"
+            android:text="Amount To Send"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/AmountSend_Name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="8dp"
+            android:inputType="number"
+            android:layout_marginTop="3dp"
+            android:hint="EX: 10 USD"
+            android:textColorHint="#98979b"
+            android:layout_below="@+id/sendCo_dm_3"
+            android:textColor="@color/white"
+            android:background="@drawable/bc_shape"/>
+
+        <TextView
+            android:id="@+id/sendCo_dm_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AmountSend_Name"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="8dp"
+            android:text="Amount To Receive"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/AmountRecieve_Name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="8dp"
+            android:inputType="numberDecimal"
+            android:layout_marginLeft="20dp"
+            android:hint="EX: 80 GBP"
+            android:textColorHint="#98979b"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/sendCo_dm_4"
+            android:background="@drawable/bc_shape"/>
 
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/purpose_dm_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AmountRecieve_Name"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="8dp"
+            android:text="Purpose"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/purpose_dm_1"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/wh_bc"
+            android:spinnerMode="dropdown"/>
+
+        <TextView
+            android:id="@+id/dummy_name_Sender_Input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner1"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="8dp"
+            android:text="Sender Name"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/name_Sender_Input"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="8dp"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:hint="sender name"
+            android:textColorHint="#98979b"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/dummy_name_Sender_Input"
+            android:background="@drawable/bc_shape"/>
+        <TextView
+            android:id="@+id/dummy_name_Receiver_Input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_Sender_Input"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="8dp"
+            android:text="Receiver Name"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/name_Receiver_Input"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="8dp"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:hint="sender name"
+            android:textColorHint="#98979b"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/dummy_name_Receiver_Input"
+            android:background="@drawable/bc_shape"/>
+
+        <Button
+            android:id="@+id/button_Send"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_below="@+id/name_Receiver_Input"
+            android:layout_marginLeft="20dp"
+            android:text="SEND MONEY"
+            android:textStyle="italic"
+            android:textSize="23sp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:layout_marginTop="10dp"/>
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "994223387048",
+    "firebase_url": "https://tayseertech-2d6d0-default-rtdb.firebaseio.com",
+    "project_id": "tayseertech-2d6d0",
+    "storage_bucket": "tayseertech-2d6d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994223387048:android:8b9c1d30192d7f349d6d9d",
+        "android_client_info": {
+          "package_name": "com.madmobiledevs.tayseer_tech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994223387048-bultjfju3sf0u6p3dtgn3hfu8rkvm0fl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP_xdO4Av2DkN0VlXVhm1tTNiTrPxm9o8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994223387048-bultjfju3sf0u6p3dtgn3hfu8rkvm0fl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
